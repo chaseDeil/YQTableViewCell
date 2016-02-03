@@ -16,6 +16,7 @@
 		AB364C901C52165100B95DEA /* YQTableViewCellMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB364C8F1C52165100B95DEA /* YQTableViewCellMenuTests.m */; };
 		AB364C9B1C52165100B95DEA /* YQTableViewCellMenuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB364C9A1C52165100B95DEA /* YQTableViewCellMenuUITests.m */; };
 		AB364CAD1C52183F00B95DEA /* YQMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB364CAC1C52183F00B95DEA /* YQMenuTableViewCell.m */; };
+		ABE274571C61832B00ABC394 /* YQHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE274561C61832B00ABC394 /* YQHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		AB364C9C1C52165100B95DEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB364CAB1C52183F00B95DEA /* YQMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQMenuTableViewCell.h; sourceTree = "<group>"; };
 		AB364CAC1C52183F00B95DEA /* YQMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQMenuTableViewCell.m; sourceTree = "<group>"; };
+		ABE274551C61832B00ABC394 /* YQHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQHelper.h; sourceTree = "<group>"; };
+		ABE274561C61832B00ABC394 /* YQHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		AB364C741C52165100B95DEA /* YQTableViewCellMenu */ = {
 			isa = PBXGroup;
 			children = (
+				ABE274541C61831000ABC394 /* Util */,
 				AB364CA81C52178900B95DEA /* Controller */,
 				AB364CA91C52178900B95DEA /* Model */,
 				AB364CAA1C52178900B95DEA /* View */,
@@ -167,6 +171,15 @@
 				AB364CAC1C52183F00B95DEA /* YQMenuTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ABE274541C61831000ABC394 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				ABE274551C61832B00ABC394 /* YQHelper.h */,
+				ABE274561C61832B00ABC394 /* YQHelper.m */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE274571C61832B00ABC394 /* YQHelper.m in Sources */,
 				AB364C7D1C52165100B95DEA /* ViewController.m in Sources */,
 				AB364C7A1C52165100B95DEA /* AppDelegate.m in Sources */,
 				AB364CAD1C52183F00B95DEA /* YQMenuTableViewCell.m in Sources */,
@@ -528,6 +542,7 @@
 				AB364CA11C52165100B95DEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB364CA21C52165100B95DEA /* Build configuration list for PBXNativeTarget "YQTableViewCellMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +551,7 @@
 				AB364CA41C52165100B95DEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB364CA51C52165100B95DEA /* Build configuration list for PBXNativeTarget "YQTableViewCellMenuUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +560,7 @@
 				AB364CA71C52165100B95DEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "YQMenuTableViewCell.h"
+#import "YQHelper.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, YQMenuTableViewCellDateSource, YQMenuTableViewCellDelete>
 
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"YQTableViewCellDemo";
+    [self initNavBar];
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -35,6 +38,24 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)initNavBar
+{
+    UIButton *rightBtn = [YQHelper createButtonWithTitle:@"编辑" target:self target:@selector(YQbtnAction:)];
+    UIButton *rightBtn1 = [YQHelper createButtonWithTitle:@"编辑22" target:self target:@selector(YQbtnAction:)];
+    UIBarButtonItem *fxBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    
+    UIBarButtonItem *tjBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn1];
+    
+    self.navigationItem.rightBarButtonItems =@[tjBarButtonItem,fxBarButtonItem];
+}
+
+- (void)YQbtnAction:(UIButton *)button
+{
+    NSLog(@"%@", button.titleLabel.text);
+}
+
+
+#pragma mark - tableView delegate && datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_tableArray count];
@@ -69,6 +90,47 @@
     cell.showMenuButton.tag = indexPath.row + 1;
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YQMenuTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell = nil;
+
+    
+    //删除按钮
+    UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath){
+        [_tableArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath]withRowAnimation:UITableViewRowAnimationAutomatic];
+        _openMenuCell = nil;
+        _openMenuCellIndex = nil;
+        [_tableView reloadData];
+    }];
+    
+    
+    //置顶按钮
+    UITableViewRowAction *toTopRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"置顶" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath){
+        
+        NSLog(@"置顶");
+        
+    }];
+    toTopRowAction.backgroundColor = [UIColor orangeColor];
+    
+    //其他按钮
+    UITableViewRowAction *otherRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"其他" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath){
+        NSLog(@"其他");
+    }];
+    
+    otherRowAction.backgroundColor = [UIColor lightGrayColor];
+    
+    //返回按钮数组
+    return @[deleteRowAction, toTopRowAction, otherRowAction];
 }
 
 #pragma mark - YQCellDelegate && dataSource
